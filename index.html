@@ -1,0 +1,2142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;html lang="fr"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;HireFlow - Le recrutement automatisé par IA&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== RESET ET VARIABLES GLOBALES ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>* {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>--primary-color: #0f172a; <span class="Apple-converted-space">     </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>--secondary-color: #4f46e5;<span class="Apple-converted-space">   </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>--accent-color: #0ea5e9;<span class="Apple-converted-space">       </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>--success-color: #10b981; <span class="Apple-converted-space">     </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>--text-color: #1e293b;<span class="Apple-converted-space">         </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>--text-light: #475569;<span class="Apple-converted-space">         </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>--bg-light: #f8fafc;<span class="Apple-converted-space">           </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>--white: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>--gradient: linear-gradient(135deg, var(--secondary-color), var(--accent-color));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>--gradient-soft: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>--shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>--shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-family: 'Inter', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>overflow-x: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== LOADER ANIMÉ ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.loader {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>z-index: 9999;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: opacity 0.5s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.loader-spinner {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border: 4px solid var(--bg-light);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-top: 4px solid var(--secondary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation: spin 1s linear infinite;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@keyframes spin {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>0% { transform: rotate(0deg); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>100% { transform: rotate(360deg); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.loader.hidden {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>pointer-events: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== HEADER STICKY ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>header {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: rgba(255, 255, 255, 0.95);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>backdrop-filter: blur(10px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>z-index: 1000;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 1rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-bottom: 1px solid rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.header-container {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max-width: 1200px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 0 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.logo {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>gap: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.logo img {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 40px; /* Taille conservée par rapport à l'ancien SVG */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>nav ul {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>list-style: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>gap: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>nav a {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>nav a:hover {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--secondary-color);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>nav a::after {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>content: '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>bottom: -5px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--gradient);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: width 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>nav a:hover::after {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.menu-toggle {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>gap: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.menu-toggle span {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 3px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--primary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== FORMULAIRE MODAL ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modal-overlay {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: rgba(0, 0, 0, 0.8);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>backdrop-filter: blur(10px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>z-index: 10000;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>visibility: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modal-overlay.active {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>visibility: visible;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modal-content {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max-width: 500px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 90%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: scale(0.8);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: transform 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modal-overlay.active .modal-content {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: scale(1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modal-close {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>top: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>right: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-light);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modal-close:hover {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--primary-color);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modal-form h3 {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--primary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.form-group {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.form-group label {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-color);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.form-group input {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border: 2px solid #e2e8f0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.form-group input:focus {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>outline: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-color: var(--secondary-color);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== SECTION HERO ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 8rem 0 4rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Arrière-plan animé */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero::before {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>content: '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>bottom: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background-image:<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background-size: 50px 50px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation: gridAnimation 10s ease-in-out infinite;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 0.3;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@keyframes gridAnimation {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>0%, 100% {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-position: 0 0, 0 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.3;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>25% {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-position: 25px 25px, 25px 25px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.6;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>50% {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-position: 50px 0, 0 50px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.2;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>75% {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-position: 0 25px, 25px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.5;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-container {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max-width: 1200px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 0 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>z-index: 2;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero h1 {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: clamp(2.5rem, 5vw, 3.5rem);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation: fadeInUp 0.8s ease forwards 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero p {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.25rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 0.9;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-left: auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-right: auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation: fadeInUp 0.8s ease forwards 0.5s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Bouton CTA avec animation */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-button {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--gradient);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 1.2rem 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation: pulse 2s infinite;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: translateY(-2px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-button::before {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>content: '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>left: -100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: left 0.5s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-button:hover::before {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>left: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@keyframes pulse {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@keyframes fadeInUp {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>from {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(30px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>to {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== SECTIONS COMMUNES ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max-width: 1200px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 0 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section-title {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--primary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section-subtitle {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-light);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 4rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-left: auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-right: auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== SECTION FONCTIONNALITÉS ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.features {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 6rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--bg-light);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.features-grid {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>gap: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-top: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-card {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: translateY(20px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-card:hover {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: translateY(-10px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-card.animate {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation: fadeInUp 0.6s ease forwards;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-icon {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 80px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 80px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--gradient);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 0 auto 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-card h3 {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--primary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-card p {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-light);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== SECTION POURQUOI HIREFLOW ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.why-section {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 6rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.why-content {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: 1fr 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>gap: 4rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.why-text h2 {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--primary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.why-benefits {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>list-style: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.why-benefits li {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-color);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.why-benefits li::before {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>content: "✓";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--gradient);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-right: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.why-visual {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stats-grid {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: 1fr 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>gap: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat-card {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--bg-light);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat-number {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--secondary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat-label {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-light);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 0.9rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-top: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== SECTION TARIFS ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 6rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--bg-light);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing-grid {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>gap: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max-width: 800px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing-card {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing-card:hover {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: translateY(-5px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing-card.featured {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--gradient);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: scale(1.05);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing-card.featured::before {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>content: "POPULAIRE";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>top: -15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>left: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: translateX(-50%);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--accent-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 0.5rem 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 0.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.price {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 1rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.price-period {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 0.7;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing-features {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>list-style: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 2rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing-features li {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 0.5rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-bottom: 1px solid rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing-card.featured .pricing-features li {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-bottom-color: rgba(255, 255, 255, 0.2);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing-btn {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--secondary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 1rem 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing-card.featured .pricing-btn {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--secondary-color);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pricing-btn:hover {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: translateY(-2px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== TESTIMONIALS AMÉLIORÉS AVEC DÉFILEMENT ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.testimonials {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 6rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.testimonials-wrapper {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-top: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.testimonials-row {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>gap: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation-duration: 30s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation-timing-function: linear;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation-iteration-count: infinite;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.testimonials-row:nth-child(1) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation-name: scrollRight;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.testimonials-row:nth-child(2) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation-name: scrollLeft;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@keyframes scrollRight {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>0% { transform: translateX(-100%); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>100% { transform: translateX(100%); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@keyframes scrollLeft {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>0% { transform: translateX(100%); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>100% { transform: translateX(-100%); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.testimonial {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--bg-light);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>min-width: 350px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border: 1px solid rgba(255, 255, 255, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>backdrop-filter: blur(10px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flex-shrink: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.testimonial:hover {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: translateY(-5px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box-shadow: var(--shadow-lg);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.testimonial::before {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>content: '"';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>top: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>right: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--secondary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 0.3;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-family: Georgia, serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.testimonial-text {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.testimonial-author {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>gap: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.author-avatar {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 45px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 45px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--gradient);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.author-info h4 {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--primary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 0.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 0.9rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.author-position {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-light);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 0.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stars {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: #fbbf24;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 0.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>letter-spacing: 1px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-top: 0.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== SECTION FAQ ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.faq {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 6rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--bg-light);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.faq-container {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max-width: 800px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.faq-item {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.faq-question {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--primary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.faq-question:hover {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--bg-light);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.faq-question::after {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>content: "+";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: transform 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.faq-question.active::after {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: rotate(45deg);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.faq-answer {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max-height: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: max-height 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.faq-answer.active {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max-height: 200px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.faq-answer p {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 0 1.5rem 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-light);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== FOOTER ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>footer {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--primary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 3rem 0 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-content {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>gap: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-section h3 {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-section ul {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>list-style: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-section ul li {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-section ul li a {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: rgba(255, 255, 255, 0.8);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-section ul li a:hover {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--accent-color);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-bottom {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-top: 1px solid rgba(255, 255, 255, 0.2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding-top: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: rgba(255, 255, 255, 0.6);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== PAGES LÉGALES ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.legal-page {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 8rem 0 4rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.legal-page.active {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.legal-content {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max-width: 800px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 0 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.legal-content h1 {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--primary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.legal-content h2 {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--primary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 2rem 0 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.legal-content h3 {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.4rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--secondary-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 1.5rem 0 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.legal-content p {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>line-height: 1.8;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-color);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.legal-content ul {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 1rem 0 1rem 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.legal-content li {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--text-color);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.back-to-home {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin-top: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 1rem 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background: var(--gradient);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>color: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: var(--transition);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.back-to-home:hover {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: translateY(-2px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== RESPONSIVE DESIGN ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 768px) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>nav {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.98);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-top: 1px solid rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>nav.mobile-open {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>nav ul {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>nav a {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.5rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.menu-toggle {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hero {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 6rem 0 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hero h1 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.2;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hero p {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.section-title {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.3;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.section-subtitle {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.features-grid {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.feature-card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.feature-icon {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 60px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 60px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.why-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.why-text h2 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.stats-grid {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.pricing-grid {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.pricing-card.featured {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.testimonial {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-width: 300px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.footer-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 480px) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hero {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 5rem 0 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hero h1 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.section-title {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.testimonial {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-width: 280px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== ANIMATIONS PERSONNALISÉES ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@keyframes float {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>0%, 100% { transform: translateY(0px); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>50% { transform: translateY(-10px); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-card:hover .feature-icon {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation: float 2s ease-in-out infinite;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* ===== FADE IN UP POUR ANIMATIONS AU SCROLL ===== */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.fade-in-up {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: translateY(30px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.fade-in-up.animate {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>transform: translateY(0);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="loader" id="loader"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="loader-spinner"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="modal-overlay" id="demoModal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="modal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="modal-close" onclick="closeModal()"&gt;&amp;times;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;form class="modal-form" id="demoForm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Demander une démo gratuite&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label for="fullname"&gt;Nom et prénom&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="text" id="fullname" name="fullname" placeholder="Jean Dupont" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label for="email"&gt;Adresse e-mail professionnelle&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="email" id="email" name="email" placeholder="jean.dupont@entreprise.com" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label for="company"&gt;Entreprise&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="text" id="company" name="company" placeholder="Nom de votre entreprise" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label for="phone"&gt;Numéro de téléphone&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button type="submit" class="cta-button" style="width: 100%; margin: 0;"&gt;Envoyer ma demande&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/form&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div id="main-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="header-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#" class="logo" onclick="showHome()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;img src="image-removebg-preview.png" alt="Logo HireFlow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#" onclick="showHome()"&gt;Accueil&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#fonctionnalites"&gt;Fonctionnalités&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#tarifs"&gt;Tarifs&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#faq"&gt;FAQ&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#" onclick="showPage('contact')"&gt;Contact&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="menu-toggle"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="home-page"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="hero" id="accueil"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1&gt;Le recrutement automatisé, intelligent et sans friction&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Révolutionnez vos processus RH avec notre agent IA qui recrute pour vous 24h/7j, 10x moins cher qu'un employé traditionnel&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="margin-top: 2rem;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#" class="cta-button" onclick="openModal()"&gt;Essai gratuit 14 jours&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#" class="cta-button" onclick="openModal()"&gt;Demander une démo&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="features" id="fonctionnalites"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="section-title"&gt;Un seul agent IA pour tout votre recrutement&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="section-subtitle"&gt;Notre intelligence artificielle centralise et automatise chaque étape de votre processus de recrutement&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="features-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="feature-card fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="feature-icon"&gt;🎯&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;Tri intelligent des CV&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Analyse automatique et scoring des candidatures selon vos critères spécifiques. Fini les heures perdues à trier manuellement.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="feature-card fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="feature-icon"&gt;💬&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;Chatbot de présélection&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Conversations automatisées pour qualifier les candidats 24h/7j. Questions personnalisées selon le poste et évaluation instantanée.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="feature-card fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="feature-icon"&gt;🎥&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;Entretiens vidéo IA&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Entretiens automatisés avec analyse comportementale et technique. Rapport détaillé et recommandations pour chaque candidat.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="feature-card fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="feature-icon"&gt;📊&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;Tableau de bord complet&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Vue d'ensemble de tous vos recrutements avec analytics détaillés et suivi des performances en temps réel.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="text-align: center; margin-top: 3rem;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#" class="cta-button" onclick="openModal()"&gt;Découvrir toutes les fonctionnalités&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="why-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="why-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="why-text fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h2&gt;Pourquoi choisir HireFlow ?&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul class="why-benefits"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;Divisez par 10 vos coûts de recrutement&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;Automatisez vos processus de sélection&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;Éliminez les biais inconscients de sélection&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;Interface simple et intuitive&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;Conformité RGPD et sécurité maximale&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;Support 24/7 et accompagnement personnalisé&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div style="margin-top: 2rem;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;a href="#" class="cta-button" onclick="openModal()"&gt;Commencer maintenant&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="why-visual fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="stats-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="stat-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="stat-number"&gt;10x&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="stat-label"&gt;Moins cher qu'un recruteur&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="stat-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="stat-number"&gt;24/7&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="stat-label"&gt;Disponibilité continue&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="stat-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="stat-number"&gt;500+&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="stat-label"&gt;Entreprises satisfaites&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="stat-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="stat-number"&gt;30min&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="stat-label"&gt;Temps de mise en place&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="pricing" id="tarifs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="section-title"&gt;Tarification simple et transparente&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="section-subtitle"&gt;Choisissez l'offre qui correspond à vos besoins de recrutement&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="pricing-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="pricing-card fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;Forfait Basique&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="price"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>99€</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="price-period"&gt;/ mois&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p style="text-align: center; color: var(--accent-color); font-weight: 600; margin-bottom: 1rem;"&gt;✨ Essai gratuit 14 jours&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul class="pricing-features"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Jusqu'à 5 offres d'emploi/mois&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Tri intelligent des CV&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Chatbot de présélection&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Tableau de bord basique&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Support par email&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="#" class="pricing-btn" onclick="openModal()"&gt;Essai gratuit&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="pricing-card featured fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;Forfait Pro&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="price"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>299€</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="price-period"&gt;/ mois&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul class="pricing-features"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Offres d'emploi illimitées&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Sourcing automatique avancé&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Tri intelligent des CV&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Chatbot de présélection&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Entretiens vidéo IA&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Tableau de bord complet&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Analytics avancés&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;✓ Support prioritaire 24/7&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="#" class="pricing-btn" onclick="openModal()"&gt;Démarrer maintenant&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="testimonials"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="section-title"&gt;Ce que disent nos clients&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="section-subtitle"&gt;Plus de 500 entreprises nous font déjà confiance&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="testimonials-wrapper"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="testimonials-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="testimonial"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="testimonial-text"&gt;Franchement, je ne pensais pas que l'IA pouvait être si précise pour le recrutement. HireFlow a complètement changé notre façon de travailler.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="testimonial-author"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-avatar"&gt;C&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4&gt;Camille&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="author-position"&gt;Responsable RH&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="stars"&gt;★★★★★&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="testimonial"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="testimonial-text"&gt;Le ROI est excellent ! En tant que startup, chaque euro compte. HireFlow nous permet d'avoir un processus professionnel sans exploser notre budget.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="testimonial-author"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-avatar"&gt;T&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4&gt;Thomas L.&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="author-position"&gt;CEO&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="stars"&gt;★★★★★&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="testimonial"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="testimonial-text"&gt;La mise en place a été super simple. L'interface est intuitive et j'ai pu créer ma première campagne de recrutement en 20 minutes chrono.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="testimonial-author"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-avatar"&gt;S&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4&gt;Sarah B.&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="author-position"&gt;Chargée de recrutement&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="stars"&gt;★★★★★&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="testimonial"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="testimonial-text"&gt;Ce qui m'impressionne le plus, c'est la capacité de HireFlow à s'adapter à nos critères spécifiques. L'IA apprend et devient de plus en plus précise.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="testimonial-author"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-avatar"&gt;M&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4&gt;Maxime&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="author-position"&gt;Directeur RH&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="stars"&gt;★★★★★&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="testimonial"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="testimonial-text"&gt;Fini les piles de CV à éplucher le week-end ! HireFlow fait le tri pour moi et je me concentre sur l'essentiel : rencontrer les bons candidats.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="testimonial-author"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-avatar"&gt;J&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4&gt;Julie F.&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="author-position"&gt;Responsable Talents&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="stars"&gt;★★★★★&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="testimonials-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="testimonial"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="testimonial-text"&gt;J'étais sceptique au début... Mais après 3 mois d'utilisation, je ne peux plus m'en passer ! Le chatbot filtre naturellement les candidats non motivés.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="testimonial-author"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-avatar"&gt;A&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4&gt;Alexandre D.&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="author-position"&gt;DRH&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="stars"&gt;★★★★★&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="testimonial"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="testimonial-text"&gt;Le support client est au top. Ils nous accompagnent vraiment dans la prise en main et répondent rapidement à toutes nos questions.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="testimonial-author"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-avatar"&gt;L&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4&gt;Laurent M.&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="author-position"&gt;Responsable Recrutement&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="stars"&gt;★★★★★&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="testimonial"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="testimonial-text"&gt;HireFlow nous a fait gagner un temps fou. Nous recrutons maintenant 3 fois plus vite qu'avant, avec une qualité de candidats bien meilleure.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="testimonial-author"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-avatar"&gt;E&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4&gt;Émilie R.&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="author-position"&gt;Head of HR&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="stars"&gt;★★★★★&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="testimonial"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="testimonial-text"&gt;La personnalisation est bluffante. HireFlow s'adapte parfaitement à notre culture d'entreprise et à nos processus internes.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="testimonial-author"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-avatar"&gt;P&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4&gt;Pierre V.&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="author-position"&gt;Directeur des Opérations&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="stars"&gt;★★★★★&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="testimonial"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="testimonial-text"&gt;Sécurité et conformité RGPD au top niveau. Nous pouvons utiliser HireFlow en toute confiance pour nos recrutements sensibles.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="testimonial-author"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-avatar"&gt;N&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="author-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4&gt;Nathalie K.&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="author-position"&gt;Responsable Conformité&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="stars"&gt;★★★★★&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="text-align: center; margin-top: 3rem;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#" class="cta-button" onclick="openModal()"&gt;Rejoindre nos clients satisfaits&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="faq" id="faq"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="section-title"&gt;Questions fréquentes&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="section-subtitle"&gt;Trouvez rapidement les réponses à vos questions&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="faq-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="faq-item fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="faq-question"&gt;Qu'est-ce que HireFlow ?&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="faq-answer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p&gt;HireFlow est une solution d'intelligence artificielle qui automatise vos processus de recrutement. Notre plateforme analyse les CV, présélectionne les candidats via un chatbot intelligent et conduit des entretiens vidéo automatisés pour vous faire gagner un temps précieux.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="faq-item fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="faq-question"&gt;Combien coûte HireFlow ?&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="faq-answer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p&gt;Nous proposons deux forfaits : le Forfait Basique à 99€/mois (avec essai gratuit 14 jours) pour jusqu'à 5 offres d'emploi, et le Forfait Pro à 299€/mois avec offres illimitées et fonctionnalités avancées comme le sourcing automatique.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="faq-item fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="faq-question"&gt;Est-ce que HireFlow est adapté à mon entreprise ?&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="faq-answer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p&gt;HireFlow s'adapte à toutes les tailles d'entreprise, de la startup à la grande corporation. Que vous recrutiez occasionnellement ou en volume, notre IA s'ajuste à vos besoins spécifiques et secteurs d'activité.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="faq-item fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="faq-question"&gt;Faut-il des compétences techniques pour utiliser HireFlow ?&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="faq-answer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p&gt;Absolument pas ! HireFlow est conçu pour être utilisé par les équipes RH sans aucune compétence technique. L'interface est intuitive et la mise en place ne prend que 30 minutes avec notre accompagnement.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="faq-item fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="faq-question"&gt;Quelle est la différence entre HireFlow et ChatGPT ?&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="faq-answer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p&gt;Contrairement à ChatGPT qui est un assistant généraliste, HireFlow est spécialement entraîné pour le recrutement. Notre IA comprend les spécificités RH, analyse les CV selon vos critères métier et respecte la conformité RGPD pour les données candidats.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="faq-item fade-in-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="faq-question"&gt;HireFlow est-il conforme au RGPD ?&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="faq-answer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p&gt;Absolument. HireFlow est 100% conforme RGPD. Toutes les données sont hébergées en Europe, chiffrées et nous respectons strictement les droits des candidats (accès, rectification, suppression). Nous avons un DPO certifié.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="text-align: center; margin-top: 3rem;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#" class="cta-button" onclick="openModal()"&gt;Une autre question ? Contactez-nous&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;footer id="contact"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="footer-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="footer-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;HireFlow&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;La solution IA qui révolutionne le recrutement. Simple, efficace et accessible à toutes les entreprises.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div style="margin-top: 1rem;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;a href="#" class="cta-button" onclick="openModal()"&gt;Essayer gratuitement&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="footer-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;Produit&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;&lt;a href="#fonctionnalites"&gt;Fonctionnalités&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;&lt;a href="#tarifs"&gt;Tarifs&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;&lt;a href="#" onclick="showPage('integrations')"&gt;Intégrations&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;&lt;a href="#" onclick="showPage('security')"&gt;Sécurité&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="footer-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;Support&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;&lt;a href="#faq"&gt;FAQ&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;&lt;a href="#" onclick="showPage('support')"&gt;Support technique&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;&lt;a href="#" onclick="showPage('contact')"&gt;Contact&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="footer-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;Légal&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;&lt;a href="#" onclick="showPage('legal')"&gt;Mentions légales&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;&lt;a href="#" onclick="showPage('terms')"&gt;Conditions d'utilisation&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;&lt;a href="#" onclick="showPage('privacy')"&gt;Politique de confidentialité&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;&lt;a href="#" onclick="showPage('rgpd')"&gt;RGPD&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="footer-bottom"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&amp;copy; 2025 HireFlow. Tous droits réservés. | Made with ❤️ in France&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="legal-page" class="legal-page"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="legal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Mentions légales&lt;/h1&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Éditeur du site&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;Dénomination sociale :&lt;/strong&gt; HireFlow SAS&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Siège social :&lt;/strong&gt; 123 Avenue des Champs-Élysées, 75008 Paris, France&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;RCS :&lt;/strong&gt; Paris B 123 456 789&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;SIRET :&lt;/strong&gt; 12345678901234&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Capital social :&lt;/strong&gt; 100 000 €&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Directeur de publication :&lt;/strong&gt; Jean Dupont&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Hébergement&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;Hébergeur :&lt;/strong&gt; OVH SAS&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Adresse :&lt;/strong&gt; 2 rue Kellermann, 59100 Roubaix, France&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Téléphone :&lt;/strong&gt; 09 72 10 10 07&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Contact&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;Email :&lt;/strong&gt; contact@hireflow.fr&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Téléphone :&lt;/strong&gt; +33 1 23 45 67 89&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Adresse postale :&lt;/strong&gt; 123 Avenue des Champs-Élysées, 75008 Paris, France&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Propriété intellectuelle&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Données personnelles&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Conformément à la loi "Informatique et Libertés" du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données personnelles vous concernant.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#" class="back-to-home" onclick="showHome()"&gt;Retour à l'accueil&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="privacy-page" class="legal-page"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="legal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Politique de confidentialité&lt;/h1&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Introduction&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;HireFlow s'engage à protéger votre vie privée. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations personnelles.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Données collectées&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Données d'identification&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Nom et prénom&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Adresse email&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Numéro de téléphone&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Nom de l'entreprise&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Données d'utilisation&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Logs de connexion&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Données de navigation&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Préférences utilisateur&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Finalité du traitement&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Vos données sont utilisées pour :&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Fournir nos services de recrutement IA&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Améliorer nos services&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Vous contacter pour le support&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Respecter nos obligations légales&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Conservation des données&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Nous conservons vos données personnelles pendant la durée nécessaire aux finalités pour lesquelles elles ont été collectées, et au maximum 3 ans après la fin de notre relation commerciale.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Vos droits&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Vous disposez des droits suivants :&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Droit d'accès à vos données&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Droit de rectification&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Droit à l'effacement&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Droit à la portabilité&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Droit d'opposition&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Contact DPO&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Pour exercer vos droits, contactez notre DPO : &lt;strong&gt;dpo@hireflow.fr&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#" class="back-to-home" onclick="showHome()"&gt;Retour à l'accueil&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="terms-page" class="legal-page"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="legal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Conditions générales d'utilisation&lt;/h1&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Article 1 - Objet&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Les présentes conditions générales d'utilisation (CGU) régissent l'utilisation de la plateforme HireFlow proposée par la société HireFlow SAS.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Article 2 - Acceptation des conditions&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;L'utilisation de la plateforme HireFlow implique l'acceptation pleine et entière des présentes CGU. Si vous n'acceptez pas ces conditions, vous ne devez pas utiliser nos services.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Article 3 - Description du service&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;HireFlow est une plateforme d'intelligence artificielle dédiée au recrutement qui propose :&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Tri automatique des CV&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Chatbot de présélection&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Entretiens vidéo automatisés&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Tableau de bord analytics&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Article 4 - Inscription et compte utilisateur&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Pour accéder aux services, l'utilisateur doit créer un compte en fournissant des informations exactes et à jour. L'utilisateur est responsable de la confidentialité de ses identifiants.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Article 5 - Tarification et paiement&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Les tarifs sont indiqués en euros TTC. Le paiement s'effectue par carte bancaire ou virement. L'abonnement est renouvelé automatiquement sauf résiliation.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Article 6 - Responsabilités&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;HireFlow s'engage à fournir un service de qualité mais ne peut garantir un fonctionnement ininterrompu. L'utilisateur est responsable de l'utilisation qu'il fait de la plateforme.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Article 7 - Propriété intellectuelle&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Tous les éléments de la plateforme (logiciels, textes, images) sont protégés par le droit d'auteur et appartiennent à HireFlow SAS.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Article 8 - Résiliation&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;L'abonnement peut être résilié à tout moment par l'une ou l'autre des parties avec un préavis de 30 jours.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Article 9 - Loi applicable&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Les présentes CGU sont soumises au droit français. Tout litige sera soumis aux tribunaux compétents de Paris.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;Dernière mise à jour :&lt;/strong&gt; 28 juillet 2025&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#" class="back-to-home" onclick="showHome()"&gt;Retour à l'accueil&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="rgpd-page" class="legal-page"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="legal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Politique RGPD&lt;/h1&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Conformité au Règlement Général sur la Protection des Données&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;HireFlow s'engage à respecter le Règlement Général sur la Protection des Données (RGPD) 2016/679 du 27 avril 2016.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Responsable du traitement&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;HireFlow SAS&lt;/strong&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>123 Avenue des Champs-Élysées&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>75008 Paris, France&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Email : dpo@hireflow.fr&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Délégué à la Protection des Données (DPO)&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Notre DPO est joignable à l'adresse : &lt;strong&gt;dpo@hireflow.fr&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Base légale du traitement&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Le traitement de vos données personnelles repose sur :&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Votre consentement (article 6.1.a du RGPD)&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;L'exécution d'un contrat (article 6.1.b du RGPD)&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Le respect d'une obligation légale (article 6.1.c du RGPD)&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;L'intérêt légitime (article 6.1.f du RGPD)&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Transferts de données hors UE&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Vos données personnelles sont exclusivement stockées et traitées au sein de l'Union Européenne. Aucun transfert vers des pays tiers n'est effectué sans garanties appropriées.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Sécurité des données&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Nous mettons en place des mesures techniques et organisationnelles appropriées :&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Chiffrement AES-256&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Authentification à double facteur&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Audits de sécurité réguliers&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Formation du personnel&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Exercice de vos droits&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Pour exercer vos droits RGPD, contactez-nous :&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Email : dpo@hireflow.fr&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Courrier : HireFlow SAS - DPO, 123 Avenue des Champs-Élysées, 75008 Paris&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Réclamation&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Vous avez le droit d'introduire une réclamation auprès de la CNIL (Commission Nationale de l'Informatique et des Libertés) si vous estimez que le traitement de vos données n'est pas conforme au RGPD.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#" class="back-to-home" onclick="showHome()"&gt;Retour à l'accueil&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="contact-page" class="legal-page"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="legal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Contact &amp; Support&lt;/h1&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Informations de contact&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Siège social&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;HireFlow SAS&lt;/strong&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>123 Avenue des Champs-Élysées&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>75008 Paris, France&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Contact commercial&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;Email :&lt;/strong&gt; contact@hireflow.fr&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Téléphone :&lt;/strong&gt; +33 1 23 45 67 89&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Horaires :&lt;/strong&gt; Lundi - Vendredi, 9h00 - 18h00&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Support technique&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;Email :&lt;/strong&gt; support@hireflow.fr&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Chat en ligne :&lt;/strong&gt; Disponible 24h/7j&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Centre d'aide :&lt;/strong&gt; help.hireflow.fr&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Délégué à la Protection des Données&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;Email :&lt;/strong&gt; dpo@hireflow.fr&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Demander une démonstration&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Intéressé par HireFlow ? Nos experts sont disponibles pour vous présenter notre solution et répondre à toutes vos questions.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="margin: 2rem 0;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#" class="cta-button" onclick="openModal()"&gt;Demander une démo&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Support client&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Notre équipe support est là pour vous accompagner :&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;strong&gt;Chat en direct :&lt;/strong&gt; Réponse immédiate sur le site&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;strong&gt;Email :&lt;/strong&gt; Réponse sous 2h ouvrées&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;strong&gt;Téléphone :&lt;/strong&gt; Support vocal personnalisé&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;strong&gt;Documentation :&lt;/strong&gt; Guides et tutoriels complets&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Partenariats&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Vous souhaitez devenir partenaire de HireFlow ?&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Email :&lt;/strong&gt; partnerships@hireflow.fr&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Presse &amp; Médias&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Pour toute demande presse ou média :&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Email :&lt;/strong&gt; presse@hireflow.fr&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#" class="back-to-home" onclick="showHome()"&gt;Retour à l'accueil&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="support-page" class="legal-page"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="legal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Support Technique&lt;/h1&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Centre d'aide&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Consultez notre base de connaissances complète avec guides, tutoriels et FAQ détaillées.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Types de support disponibles&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Support Basique (inclus avec tous les abonnements)&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Email support : Réponse sous 24h&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Base de connaissances en ligne&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Tutoriels vidéo&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;FAQ complète&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Support Prioritaire (Forfait Pro)&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Chat en direct 24h/7j&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Support téléphonique&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Réponse email sous 2h&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Customer Success Manager dédié&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Formation personnalisée&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Problèmes fréquents&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Connexion et authentification&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Si vous rencontrez des difficultés pour vous connecter, vérifiez :&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Votre adresse email et mot de passe&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;La configuration de votre authentification à deux facteurs&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Votre connexion internet&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Performance et lenteurs&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Pour optimiser les performances :&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Utilisez un navigateur récent (Chrome, Firefox, Safari)&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Videz le cache de votre navigateur&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Vérifiez votre connexion internet&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Intégrations tierces&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Notre équipe technique configure gratuitement vos intégrations avec :&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Systèmes ATS existants&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Plateformes de diffusion d'offres&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Outils de communication (Slack, Teams)&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;Solutions de paie et RH&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Statut du service&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Consultez en temps réel l'état de nos services sur : &lt;strong&gt;status.hireflow.fr&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Contactez le support&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="margin: 2rem 0;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#" class="cta-button" onclick="openModal()"&gt;Contactez le support&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;Email direct :&lt;/strong&gt; support@hireflow.fr&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Téléphone :&lt;/strong&gt; +33 1 23 45 67 90&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#" class="back-to-home" onclick="showHome()"&gt;Retour à l'accueil&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== VARIABLES GLOBALES =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let currentForm = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== GESTION DU LOADER =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('load', function() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const loader = document.getElementById('loader');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>loader.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}, 1000);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== GESTION DE LA MODAL =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function openModal() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const modal = document.getElementById('demoModal');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>modal.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.body.style.overflow = 'hidden';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('fullname').focus();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function closeModal() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const modal = document.getElementById('demoModal');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>modal.classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.body.style.overflow = 'auto';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Fermeture modal en cliquant en dehors</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('demoModal').addEventListener('click', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (e.target === this) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>closeModal();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Fermeture modal avec Escape</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.addEventListener('keydown', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (e.key === 'Escape') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>closeModal();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== GESTION DU FORMULAIRE =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('demoForm').addEventListener('submit', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>e.preventDefault();</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const formData = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>fullname: document.getElementById('fullname').value,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>email: document.getElementById('email').value,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>company: document.getElementById('company').value,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>phone: document.getElementById('phone').value,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>timestamp: new Date().toISOString(),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>source: window.location.href</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Simulation d'envoi des données</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const button = this.querySelector('.cta-button');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const originalText = button.textContent;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>button.textContent = 'Envoi en cours...';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button.disabled = true;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Ici vous pourriez intégrer votre système de CRM/email</p>
+<p class="p1"><span class="Apple-converted-space">            </span>console.log('Données collectées:', formData);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert(`Merci ${formData.fullname} ! Nous vous contactons sous 24h à l'adresse ${formData.email} pour programmer votre démo personnalisée.`);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>button.textContent = originalText;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>button.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>this.reset();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>closeModal();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}, 2000);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== GESTION DES PAGES =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function showHome() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Masquer toutes les pages</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('.legal-page').forEach(page =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>page.classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Afficher la page d'accueil</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('home-page').style.display = 'block';</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Mettre à jour l'URL sans recharger</p>
+<p class="p1"><span class="Apple-converted-space">        </span>history.pushState({page: 'home'}, 'HireFlow - Accueil', '/');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function showPage(pageName) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Masquer la page d'accueil</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('home-page').style.display = 'none';</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Masquer toutes les pages légales</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('.legal-page').forEach(page =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>page.classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Afficher la page demandée</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const targetPage = document.getElementById(pageName + '-page');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (targetPage) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>targetPage.classList.add('active');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Scroll vers le haut</p>
+<p class="p1"><span class="Apple-converted-space">            </span>window.scrollTo({</p>
+<p class="p1"><span class="Apple-converted-space">                </span>top: 0,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>behavior: 'smooth'</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Mettre à jour l'URL</p>
+<p class="p1"><span class="Apple-converted-space">            </span>history.pushState({page: pageName}, getPageTitle(pageName), '/' + pageName);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getPageTitle(pageName) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const titles = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'legal': 'HireFlow - Mentions légales',</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'privacy': 'HireFlow - Politique de confidentialité',</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'terms': 'HireFlow - Conditions d\'utilisation',</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'rgpd': 'HireFlow - RGPD',</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'contact': 'HireFlow - Contact',</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'support': 'HireFlow - Support'</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return titles[pageName] || 'HireFlow';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Gestion du bouton retour du navigateur</p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('popstate', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (e.state &amp;&amp; e.state.page) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (e.state.page === 'home') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showHome();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showPage(e.state.page);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showHome();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== ANIMATIONS AU SCROLL =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function handleScrollAnimations() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const elements = document.querySelectorAll('.fade-in-up');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const windowHeight = window.innerHeight;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>elements.forEach(element =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const elementTop = element.getBoundingClientRect().top;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (elementTop &lt; windowHeight * 0.8) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>element.classList.add('animate');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Animation spéciale pour les cartes de fonctionnalités</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const featureCards = document.querySelectorAll('.feature-card');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>featureCards.forEach((card, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cardTop = card.getBoundingClientRect().top;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (cardTop &lt; windowHeight * 0.8) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>card.classList.add('animate');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, index * 200);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('scroll', handleScrollAnimations);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>handleScrollAnimations();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== ANIMATIONS DES STATISTIQUES =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function animateCounters() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const statNumbers = document.querySelectorAll('.stat-number');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>statNumbers.forEach(stat =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const target = stat.textContent;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (target === '10x') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let current = 1;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const timer = setInterval(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>current++;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>stat.textContent = current + 'x';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (current &gt;= 10) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>clearInterval(timer);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 100);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (target === '500+') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let current = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const timer = setInterval(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>current += 25;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>stat.textContent = current + '+';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (current &gt;= 500) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>stat.textContent = '500+';</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>clearInterval(timer);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 50);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const statsSection = document.querySelector('.why-section');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let statsAnimated = false;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('scroll', function() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!statsAnimated &amp;&amp; statsSection) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const rect = statsSection.getBoundingClientRect();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (rect.top &lt; window.innerHeight * 0.8) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>animateCounters();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>statsAnimated = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== ACCORDÉON FAQ =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>class FAQAccordion {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>constructor() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>this.questions = document.querySelectorAll('.faq-question');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>this.init();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>init() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>this.questions.forEach(question =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>question.addEventListener('click', () =&gt; this.toggleQuestion(question));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>toggleQuestion(clickedQuestion) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const answer = clickedQuestion.nextElementSibling;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const isActive = clickedQuestion.classList.contains('active');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Ferme toutes les autres questions</p>
+<p class="p1"><span class="Apple-converted-space">            </span>this.questions.forEach(question =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (question !== clickedQuestion) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>question.classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>question.nextElementSibling.classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Toggle la question cliquée</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (isActive) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>clickedQuestion.classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>answer.classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>clickedQuestion.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>answer.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>new FAQAccordion();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== SCROLL FLUIDE POUR LES LIENS D'ANCRAGE =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.querySelectorAll('a[href^="#"]').forEach(anchor =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>anchor.addEventListener('click', function (e) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const target = document.querySelector(this.getAttribute('href'));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (target) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const headerHeight = document.querySelector('header').offsetHeight;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const targetPosition = target.offsetTop - headerHeight - 20;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>window.scrollTo({</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>top: targetPosition,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>behavior: 'smooth'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== ANIMATION DU HEADER AU SCROLL =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let lastScrollTop = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const header = document.querySelector('header');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('scroll', function() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const scrollTop = window.pageYOffset || document.documentElement.scrollTop;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (scrollTop &gt; 50) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>header.style.boxShadow = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>lastScrollTop = scrollTop;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== MENU MOBILE =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const menuToggle = document.querySelector('.menu-toggle');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const nav = document.querySelector('nav');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>menuToggle.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>nav.classList.toggle('mobile-open');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>menuToggle.classList.toggle('active');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.querySelectorAll('nav a').forEach(link =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>link.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>nav.classList.remove('mobile-open');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>menuToggle.classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.addEventListener('click', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!nav.contains(e.target) &amp;&amp; !menuToggle.contains(e.target)) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>nav.classList.remove('mobile-open');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>menuToggle.classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ===== INITIALISATION =====</p>
+<p class="p1"><span class="Apple-converted-space">    </span>console.log('🚀 HireFlow Landing Page améliorée chargée avec succès!');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>console.log('📊 Formulaire modal, pages légales et animations activés');</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Initialisation de la page d'accueil</p>
+<p class="p1"><span class="Apple-converted-space">    </span>history.replaceState({page: 'home'}, 'HireFlow - Accueil', '/');</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
